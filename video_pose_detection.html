@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Video Analysis</title>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision/vision_bundle.js"
+    crossorigin="anonymous"></script>
+    <script type="module" src="videoScript.js"></script>
+    <script type="module" src="script.js"></script>
+    <style>
+        #container {
+            display: flex;
+            width: 100%;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 20px; 
+            flex-wrap: wrap; 
+        }
+        #videoContainer {
+            flex: 1; 
+            min-width: 
+        }
+        #imageContainer {
+            position: relative;
+        }
+        #videoPlayer {
+            position:absolute;
+        }
+        #frameCanvas {
+            display:none
+        }
+        video {
+            max-width: 100%;
+            height: auto;
+        }
+        #controls {
+            margin-top: 10px;
+        }
+        .canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 100;
+            pointer-events: none; /* clicks pass through this layer */
+            border:0;
+            margin:0;
+            padding:0;
+
+        }
+        #removeFramesButton {
+            color: red;
+            font-weight: bold;
+        }
+
+        #resultsContainer {
+            border: 1px solid #ccc;
+            padding: 10px;
+            width: 300px;
+            max-width: 100%; 
+        }
+
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="videoContainer">
+            <h1>Video analysis</h1>
+            <input type="file" id="video-input" accept="video/*"> 
+                <div id="controls">
+                <button id="playButton"> &gt; || </button>
+                <button id="slowMotionButton">Slow</button>
+                <button id="frameBackButton"> &lt; </button>
+                <button id="frameForwardButton"> &gt; </button>
+                <button id="analyseButton">analyse</button>
+            </div>
+            <div id="imageContainer">
+                <video id="videoPlayer" controls>
+                    really old browser!
+                </video>
+                <canvas id="frameCanvas" style="display:hidden"></canvas>
+            </div>
+        </div>  
+
+        <div id="resultsContainer" style="margin-top: 20px;">
+            <div id="calculationResults"></div>
+            <button id="removeFramesButton">Remove All Frames</button>
+        <div>
+    </div>
+</body>
+</html>
